@@ -7,7 +7,8 @@ import {
         removeExpense, 
         setExpenses, 
         startSetExpenses, 
-        startRemoveExpense 
+        startRemoveExpense,
+        startEditExpense
     } from '../../actions/expenses';
 import expenses from '../fixtures/expenses';
 import database from '../../firebase/firebase';
@@ -21,6 +22,10 @@ beforeEach((done) => {
     })
     database.ref('expenses').set(expensesData).then(() => done());
 });
+
+
+////////////////////
+// Remove Expense
 
 test('should setup remove expense action object', () => {
     const action = removeExpense({ id: '123abc' });
@@ -49,6 +54,10 @@ test('should remove expense from firebase', (done) => {
         });
 });
 
+
+////////////////////
+// Edit Expense
+
 test('should setup edit expense action object', () => {
     const action = editExpense('123abc', {note: 'abc'});
     expect(action).toEqual({
@@ -59,6 +68,31 @@ test('should setup edit expense action object', () => {
         }
     });
 });
+
+test('should edit expense from firebase', (done) => { // Done is added for async tests
+    const store = createMockStore({});
+    const id = expenses[0].id;
+    const updates = {
+        amount: 21045
+    }
+    store.dispatch(startEditExpense(id, updates))
+        .then(() => { 
+            const actions = store.getActions();
+            expect(actions[0]).toEqual({
+                type: 'EDIT_EXPENSE',
+                id,
+                updates
+            });
+            return database.ref(`expenses/${id}`).once('value');
+        })
+        .then((snapshot) => {
+            expect(snapshot.val().amount).toBe(updates.amount);
+            done();
+        });
+});
+
+////////////////////
+// Add Expense
 
 test('should setup the add expense action object with provided values', () => {
     const expenseData = expenses[2];
@@ -121,7 +155,11 @@ test('should add expense with defaults to DB and store', (done) => {
         });
 }) 
 
-test('should setup set expense action object with data', () => {
+
+////////////////////
+// Set Expenses
+
+test('should setup set expenses action object with data', () => {
     const action = setExpenses(expenses);
     expect(action).toEqual({
         type: 'SET_EXPENSES',
