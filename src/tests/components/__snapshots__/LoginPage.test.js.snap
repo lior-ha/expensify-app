@@ -17,8 +17,24 @@ exports[`Should render LoginPage correctly 1`] = `
     </p>
     <button
       className="button"
+      onClick={[Function]}
+      value="googleAuthProvider"
     >
       Login with Google
+    </button>
+    <button
+      className="button"
+      onClick={[Function]}
+      value="githubAuthProvider"
+    >
+      Login with GitHub
+    </button>
+    <button
+      className="button"
+      onClick={[Function]}
+      value="twitterAuthProvider"
+    >
+      Login with Twitter
     </button>
   </div>
 </div>

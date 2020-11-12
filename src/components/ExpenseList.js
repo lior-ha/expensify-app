@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import ExpenseListItem from './ExpenseListItem';
 import selectExpenses from '../selectors/expenses';
 
-// exported only for testing an unconnected version
 export const ExpenseList = (props) => (
     <div className="content-container">
         <div className="list-header">
@@ -14,7 +13,7 @@ export const ExpenseList = (props) => (
         <div className="list-body">
             {
                 props.expenses.length===0 ? (
-                    <div class="list-item list-item--message">
+                    <div className="list-item list-item--message">
                         <span>No Expenses</span>
                     </div>
                 ) : (

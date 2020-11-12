@@ -15,10 +15,14 @@ const config = {
 firebase.initializeApp(config);
 
 const database = firebase.database();
-const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+const providers = {
+    googleAuthProvider: new firebase.auth.GoogleAuthProvider(),
+    githubAuthProvider: new firebase.auth.GithubAuthProvider(),
+    twitterAuthProvider: new firebase.auth.TwitterAuthProvider()
+}
 
 export {
     firebase,
-    googleAuthProvider,
+    providers,
     database as default
 };

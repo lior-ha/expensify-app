@@ -10,6 +10,6 @@ test('Should render LoginPage correctly', () => {
 test('should call logout when clicking logout', () => {
     const startLogin = jest.fn();
     const wrapper = shallow(<LoginPage startLogin={startLogin} />);
-    wrapper.find('button').simulate('click');
+    wrapper.find('button').at(0).simulate('click', ({target: {value: 'googleAuthProvider'}}));
     expect(startLogin).toHaveBeenCalled();    
 });

@@ -81,7 +81,7 @@ exports[`should render ExpenseList woth empty message 1`] = `
     className="list-body"
   >
     <div
-      class="list-item list-item--message"
+      className="list-item list-item--message"
     >
       <span>
         No Expenses

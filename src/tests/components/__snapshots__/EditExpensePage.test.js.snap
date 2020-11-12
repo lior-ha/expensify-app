@@ -16,7 +16,7 @@ exports[`should render EditExpensePage correctly 1`] = `
     </div>
   </div>
   <div
-    class="content-container"
+    className="content-container"
   >
     <ExpenseForm
       expense={
@@ -37,5 +37,18 @@ exports[`should render EditExpensePage correctly 1`] = `
       Remove Expense
     </button>
   </div>
+  <ConfirmRemoveModal
+    handleCancelRemove={[Function]}
+    handleRemoveExpense={[Function]}
+    removeExpenseObject={
+      Object {
+        "amount": 4500,
+        "createdAt": 345600000,
+        "description": "Credit card",
+        "id": "3",
+        "note": "",
+      }
+    }
+  />
 </div>
 `;
