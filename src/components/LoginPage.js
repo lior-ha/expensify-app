@@ -7,7 +7,7 @@ export class LoginPage extends React.Component {
     onClick = (e) => {
         this.props.startLogin(e.target.value);
     };
-//export const LoginPage = ({startLogin}) => (
+    
     render() {
         return (
             <div className="box-layout">
@@ -15,8 +15,6 @@ export class LoginPage extends React.Component {
                     <h1 className="box-layout__title">Expensify</h1>
                     <p>It's time to get your expenses under control</p>
                     <button className="button" onClick={this.onClick} value="googleAuthProvider">Login with Google</button>
-                    {/* <button className="button" onClick={this.onClick} value="githubAuthProvider">Login with GitHub</button>
-                    <button className="button" onClick={this.onClick} value="twitterAuthProvider">Login with Twitter</button> */}
                 </div>
             </div>
         );
@@ -24,7 +22,7 @@ export class LoginPage extends React.Component {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    startLogin: (provider) => dispatch(startLogin(provider))
+    startLogin: () => dispatch(startLogin())
 });
 
 export default connect(undefined, mapDispatchToProps)(LoginPage);
